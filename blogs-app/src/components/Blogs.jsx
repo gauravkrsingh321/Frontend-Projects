@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "../Context/AppContext";
+import { AppContext } from "../context/AppContext";
 import Spinner from "./Spinner";
 import BlogDetails from "./BlogDetails";
 
