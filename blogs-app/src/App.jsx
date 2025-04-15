@@ -1,7 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import Header from "./components/Header";
-import Blogs from "./components/Blogs";
-import Pagination from "./components/Pagination";
 import { AppContext } from "./Context/AppContext";
 import { Route, Routes, useLocation, useSearchParams } from "react-router";
 import Home from "./pages/Home";
