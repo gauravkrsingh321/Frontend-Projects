@@ -1,6 +1,6 @@
 # 🛒 React E-commerce Website
 
-A fully responsive and functional E-commerce web application built using **React.js**. The website allows users to  and remove items to the cart, and simulate a checkout experience.
+A fully responsive and functional E-commerce web application built using **React.js**. The website allows users to add and remove items from the cart and track total amount for multiple items added to cart.
 
 
 ## ✨ Features
@@ -16,7 +16,7 @@ A fully responsive and functional E-commerce web application built using **React
 - **Frontend**: React.js, JSX, CSS(Tailwind)
 - **State Management**: useState, useEffect, Redux
 - **Routing**: React Router
-- **Fake API**: fakestoreapi.com 
+- **Fake API**: [fakestoreapi.com](https://fakestoreapi.com/)
 - **Icons**: React Icons 
 
 
