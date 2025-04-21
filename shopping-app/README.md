@@ -1,12 +1,46 @@
-# React + Vite
+# 🛒 React E-commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive and functional E-commerce web application built using **React.js**. The website allows users to  and remove items to the cart, and simulate a checkout experience.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🛒 Add to cart / Remove from cart
+- 💰 View cart with total price
+- 📦 Checkout page (frontend only)
+- 💻 Responsive design for all screen sizes
+- ⚛️ Built with modern React (Hooks + Functional Components)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔧 Tech Stack
+
+- **Frontend**: React.js, JSX, CSS(Tailwind)
+- **State Management**: useState, useEffect, Redux
+- **Routing**: React Router
+- **Fake API**: fakestoreapi.com 
+- **Icons**: React Icons 
+
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/gauravkrsingh321/Frontend-Projects.git
+cd shopping-app
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
