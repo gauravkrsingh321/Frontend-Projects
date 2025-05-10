@@ -87,7 +87,7 @@ let totalCorrect = 0;
 let timer = 30; // Initial timer value
 let timerInterval; // Variable to hold the interval ID
 
-function timerclock() {
+function timerclock(index) {
   // Clear any existing interval before starting a new one
   clearInterval(timerInterval);
 
@@ -108,6 +108,14 @@ function timerclock() {
     } else {
       clearInterval(timerInterval); // Stop the timer once it hits 0
       // Handle what happens when the timer reaches 0, if needed
+      // Always save unanswered state, even if already exists
+      const quizState = JSON.parse(localStorage.getItem("quiz-state")) || {};
+      quizState[index] = {
+        selectedOption: null,
+        quizTime: 0,
+      };
+      localStorage.setItem("quiz-state", JSON.stringify(quizState));
+      console.log("Saved unanswered state for question", index);
       // Disable all options when timer reaches 0
       const allOptions = document.querySelectorAll(".options .option");
       allOptions.forEach((opt) => opt.classList.add("disabled"));
@@ -129,9 +137,30 @@ function showData(index) {
   } else {
     timerEl.innerText = "30"; // If no saved time, set default to 30
   }
-  // Call the timerclock function to start the timer only if it's the first time
-  if (savedTime === 30) {
-    timerclock();
+  
+  //Below line code controls when to start the timer for a quiz question.
+  //Condition explained:
+  //(1) savedTime === 30
+  // This checks if the timer for the current question is at its initial value (30 seconds).
+  // In other words, the timer hasn't started counting down yet for this question.
+  //(2) (!quizState[index] || quizState[index].selectedOption === null)
+  // !quizState[index]: There is no saved state for this question (the user hasn't interacted with it yet).
+  // quizState[index].selectedOption === null: The question exists in the state, but the user hasn't selected an answer yet.
+  // The whole expression is true if the question is new or still unanswered.
+  // Combined with && (AND):
+  // Both conditions must be true:
+  // The timer is at its starting value AND
+  // The question is either being seen for the first time or hasn't been answered yet.
+//   What happens if true?
+// The function timerclock(index); is called, which starts the countdown timer for this question.
+// Why is this important?
+// Prevents the timer from starting again if the user already answered the question or is revisiting it.
+// Ensures the timer only starts for questions that are new or unanswered and only once, at the initial state.
+  if (
+    savedTime === 30 &&
+    (!quizState[index] || quizState[index].selectedOption === null)
+  ) {
+    timerclock(index);
   }
 
   // Render the question and options with updated question number
@@ -166,6 +195,12 @@ function showData(index) {
   const savedAnswer = quizState[index] ? quizState[index].selectedOption : null;
   // const savedtime = quizState[index] ? quizState[index].quizTime : null;
   const correctAnswer = quiz[index].answer; // Correct answer for the current question
+  // If this question was timed out or answered, show disabled state
+  if (savedTime === 0) {
+    secondPage.style.backgroundColor = "#C50C00";
+    allOptions.forEach((option) => option.classList.add("disabled"));
+  }
+
   allOptions.forEach((option) => {
     // If there's a saved answer, we need to show the tick or cross
     if (savedAnswer) {
