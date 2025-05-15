@@ -6,6 +6,10 @@ const endQuiz = document.querySelector(".end-quiz");
 const restartBtn = document.querySelector(".restart");
 const questionNoElem = document.querySelector(".question-no span"); // Reference to the question number element
 const resultSpan = document.querySelector(".result span"); // Reference to the question number element
+const audio1 = new Audio('./audio/correct answer.mp3');
+const audio2 = new Audio('./audio/wrong answer.mp3');
+const audio3 = new Audio('./audio/button click.mp3');
+
 
 const quiz = [
   {
@@ -72,6 +76,8 @@ const quiz = [
 
 function startGame() {
   start.addEventListener("click", () => {
+    audio3.currentTime = 0;
+    audio3.play();
     homepage.style.display = "none";
     secondPage.style.display = "block";
     // Initially, show the first question
@@ -137,7 +143,7 @@ function showData(index) {
   } else {
     timerEl.innerText = "30"; // If no saved time, set default to 30
   }
-  
+
   //Below line code controls when to start the timer for a quiz question.
   //Condition explained:
   //(1) savedTime === 30
@@ -231,7 +237,11 @@ function showData(index) {
         clearInterval(timerInterval); // Stop the timer when an option is clicked
         timer = 0; // Set timer to 0
       }
-      if (clickedOption === correctOption) totalCorrect++;
+      if (clickedOption === correctOption) {
+        audio1.currentTime = 0;
+        audio1.play();
+        totalCorrect++;
+      } 
       resultSpan.innerText = totalCorrect;
       if (correctOption) {
         const correctTickImage = correctOption.querySelector(".tick");
@@ -239,7 +249,9 @@ function showData(index) {
       }
 
       // Show the wrong tick for the clicked option if it's wrong
-      if (clickedOption.innerText !== correctAnswer) {
+      if(clickedOption.innerText !== correctAnswer) {
+        audio2.currentTime = 0;
+        audio2.play();
         const wrongTickImage = clickedOption.querySelector(".wrong");
         wrongTickImage.style.display = "block"; // Show wrong tick image for clicked option
       }
@@ -277,6 +289,8 @@ function showData(index) {
       // Ensure we're not going below the first question
       prevButton.classList.remove("disabled");
       clearInterval(timerInterval);
+      audio3.currentTime = 0;
+      audio3.play();
       index--; // Move to the previous question
       questionNo--; // Decrement the question number
       showData(index); // Update the display with the previous question
@@ -289,8 +303,12 @@ function showData(index) {
     if (index < quiz.length - 1) {
       index++; // Move to the next question
       questionNo++;
+      audio3.currentTime = 0;
+      audio3.play();
       showData(index); // Increment the question number
     } else {
+      audio3.currentTime = 0;
+      audio3.play();
       index = 0;
       questionNo = 1;
       EndQuiz();
@@ -306,10 +324,12 @@ function EndQuiz() {
 function restartGame() {
   restartBtn.addEventListener("click", () => {
     localStorage.removeItem("quiz-state");
+    audio3.currentTime = 0;
+    audio3.play();
     endQuiz.style.display = "none";
     homepage.style.display = "flex";
     totalCorrect = 0;
     resultSpan.innerText = totalCorrect; //Reset Score
   });
 }
-restartGame();  
+restartGame();
