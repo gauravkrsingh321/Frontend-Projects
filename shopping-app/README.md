@@ -7,6 +7,7 @@ A fully responsive and functional E-commerce web application built using **React
 
 - 🛒 Add to cart / Remove from cart
 - 💰 View cart with total price
+- 🔍 Search Functionality added
 - 📦 Checkout page (frontend only)
 - 💻 Responsive design for all screen sizes
 - ⚛️ Built with modern React (Hooks + Functional Components)
