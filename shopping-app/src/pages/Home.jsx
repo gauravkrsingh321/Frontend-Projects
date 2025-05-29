@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="relative mb-3 mx-auto max-w-[1100px] mt-6">
+      <div className="relative mb-3 px-3 md:px-0 mx-auto max-w-[1100px] mt-6">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -43,13 +43,13 @@ const Home = () => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground"
+          className="lucide lucide-search absolute left-4 md:left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground"
         >
           <circle cx="11" cy="11" r="8"></circle>
           <path d="m21 21-4.3-4.3"></path>
         </svg>
         <input
-          className="flex h-10 w-full rounded-[12px] border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pl-9"
+          className="flex h-10 w-full rounded-[12px] border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-sm muted-foreground disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pl-9"
           placeholder="Search Products Here...."
           type="search"
           value={searchTerm}
