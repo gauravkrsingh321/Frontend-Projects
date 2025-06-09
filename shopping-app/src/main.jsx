@@ -14,7 +14,10 @@ createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
-      <Toaster/>
+      <Toaster toastOptions={{
+          duration: 800, // Global duration for all toasts
+        }}
+      />
     </BrowserRouter>
   </Provider>
 );

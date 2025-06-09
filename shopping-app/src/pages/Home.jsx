@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import Spinner from '../components/Spinner';
 import Product from '../components/Product';
 
-const Home = () => {
+const Home = ({theme}) => {
   const API_URL = "https://fakestoreapi.com/products";
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([])
@@ -27,19 +27,19 @@ const Home = () => {
 
   //filter posts
   const filteredData = posts.filter(post =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    post.title.toLowerCase().includes(searchTerm.trim().toLowerCase())
   )
 
   return (
-    <div>
-      <div className="relative mb-3 px-3 md:px-0 mx-auto max-w-[1100px] mt-6">
+    <div className='dark:bg-slate-900 pt-8 pb-4 bg-white '>
+      <div className="relative mb-3 px-3 md:px-0 mx-auto max-w-[1100px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
+          stroke={ theme === 'dark' ? 'white' : 'black'}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -49,7 +49,7 @@ const Home = () => {
           <path d="m21 21-4.3-4.3"></path>
         </svg>
         <input
-          className="flex h-10 w-full rounded-[12px] border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-sm muted-foreground disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pl-9"
+          className="flex dark:placeholder:text-white dark:text-white h-10 w-full rounded-[12px] border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-sm muted-foreground disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pl-9"
           placeholder="Search Products Here...."
           type="search"
           value={searchTerm}

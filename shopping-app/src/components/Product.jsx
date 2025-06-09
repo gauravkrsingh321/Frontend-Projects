@@ -16,12 +16,12 @@ const Product = ({ post }) => {
     toast.error("Item removed from cart");
   };
   return (
-    <div className="flex flex-col items-center justify-between hover:scale-110 transition duration-300 ease-in gap-3 p-4 mt-10 ml-5 rounded-xl outline shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_0px_95px_53px_#00000024]">
+    <div className="flex flex-col dark:bg-white items-center justify-between hover:scale-110 transition duration-300 ease-in gap-3 p-4 mt-10 ml-5 rounded-xl outline shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_0px_95px_53px_#00000024]">
       <div>
         <p className="text-gray-700 font-semibold text-lg text-left truncate w-40 mt-1">{post.title}</p>
       </div>
       <div>
-        <p className="w-40 text-gray-400 font-normal text-[16px] md:text-[12px] text-left">{post.description.split(" ").slice(0, 10).join(" ") + "..."}</p>
+        <p className="w-40 text-gray-400 font-normal text-[16px] md:text-[12px]">{post.description.split(" ").slice(0, 10).join(" ") + "..."}</p>
       </div>
       <div className="h-[180px]">
         <img className="w-full h-full" src={post.image} />

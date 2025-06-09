@@ -1,19 +1,23 @@
 import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaMoon, FaShoppingCart, FaSun } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router";
 
-const Navbar = () => {
+const Navbar = ({theme,themeHandler}) => {
   const cart = useSelector((state) => state.cart);
   return (
     <div>
       <nav className="flex justify-between items-center h-20 max-w-6xl mx-auto">
         <NavLink to="/">
           <div className="ml-5 ">
-            <img className="w-48" src="./logo.png" alt="logo" />
+            <img className="w-32 md:w-48 p-4" src="./logo.png" alt="logo" />
           </div>
         </NavLink>
-        <div className="flex items-center font-medium text-slate-100 mr-5 space-x-6">
+        <div className="flex items-center font-medium dark:text-slate-100 text-green-500 mr-5 md:space-x-6 space-x-4">
+          <button className='cursor-pointer  text-2xl' onClick={themeHandler}>
+          { theme === 'dark' ? <FaSun color="white"/> : <FaMoon color="green"/> }
+        </button>
+
           <NavLink to="/">
             <p>Home</p>
           </NavLink>
